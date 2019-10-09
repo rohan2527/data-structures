@@ -1,31 +1,22 @@
 package com.bridgelabz.datastructure;
-
-import java.util.Queue;
-
+import com.bridgelabz.utility.Queue;
 import com.bridgelabz.utility.Utility;
 
 public class BankCashCounter {
 
 		// TODO Auto-generated method stub
-		
-			static Utility utility=new Utility();
-			static Queue<Integer> withdrawQueue= new Queue<Integer>();
-			static Queue<Integer> depositeQueue= new Queue<Integer>();
-
 			
 			public static void main(String args[]){
 				BankCashCounter queueDemo=new BankCashCounter();
 				Utility utility=new Utility();
-
+				Queue Q=new Queue(10);
 				String exit=new String();
 				do{
 					System.out.println("1: Deposite Cash");
 					System.out.println("2: Withdraw Cash");
-					System.out.println("3: Withdraw Queue size");
-					System.out.println("4: Deposite Queue size");
-					BankCashCounter.menuChoice(utility.integerInput());
 					System.out.println("Press E to exit");
-					exit=queueDemo.utility.stringInput();		
+					exit=Utility.stringInput();
+					BankCashCounter.menuChoice(utility.integerInput());
 				}while(!exit.equalsIgnoreCase("E"));
 			}
 
@@ -46,7 +37,7 @@ public class BankCashCounter {
 				System.out.println();
 				System.out.println("1: Join In queue.");
 				System.out.println("2: Get service (Leave Queue).");
-				int n=utility.integerInput();
+				int n=Utility.integerInput();
 				switch(n){
 					case 1: try{
 								depositeQueue.enQueue( Integer(1));

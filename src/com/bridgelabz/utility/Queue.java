@@ -1,50 +1,106 @@
 package com.bridgelabz.utility;
 
-public class Queue<E> {
-	private E[] array;
-	int front,rear;
-	public final int SIZE=100;
-	public Queue(){
-		array=(E[])new Object[SIZE];
-		front=-1;
+public class Queue {
+
+	public static	int queue[];
+	public	int data;
+	 static int front;
+	 static	int rear;
+	static int size;
+		//constructor to create queue
+	public Queue(int n)
+	{
+		queue=new int[10];
+size = 10;
+front=0;
 		rear=-1;
-}
-	public void enQueue(E item)throws Exception{
-		//check queue is full
-		rear++;
-		if(rear==SIZE){
-			throw new Exception();
-		}
-		if(rear==0)
-			front=0;
+		
+	}
+	public void enQueue(int data)
+		{
+			if (isFull())
+			{
+				System.out.println("Queue is full ");
+				System.exit(1);
+			}
+			else if(rear<front) {
+				queue[0]=data;
+				rear ++;
+			}
 
-		array[rear]=item;
+			else
+			{
+				queue[rear+1]=data;	
+				rear++;
+			}
+		
+			}
 
-	}
-	public E deQueue()throws Exception{
-		//if front less then or equal to rear
-		if(front <= rear){
-			front++;
-			return array[front-1];
-		}else{
-			throw new Exception();
-		}
-				 
-	}
-	public boolean isEmpty(){
-		if(rear==-1)
-			return true;
-		else if(front>rear)
-			return true;
-		else
-			return false;
-	}
-	public int size(){
+		
+
+	public  void deQueue() {
 		if(isEmpty())
-			return 0;
+		{
+			System.out.println("Queue is empty ");
+			System.exit(1);
+		}
 		else
-			return rear-front+1;
+			for(int i=0;i<rear;i++)
+			{
+				queue[i]=queue[i+1];
+			}
+		rear--;
+		
+	}
+	public  boolean isFull() {
+		// TODO Auto-generated method stub
+		if(rear==size-1)
+		{
+			return true;
+		}
+		return false;
+	}
+	private  boolean isEmpty()
+	{
+		// TODO Auto-generated method stub
+		if(rear<0)
+		{
+		return true;	
+		}
+		return false;
 	}
 	
+	public  int size()
+	{
+		return rear+1;
+	}
+	public void showQueue()
+	{
+		if(isEmpty())
+	{
+		System.out.println("queue is empty");
+	}
+	else
+		for(int i=0;i<=rear;i++)
+		{
+			System.out.println(queue[i]);
+		}
+	}
+	
+	public void showStatus()
+	{
+		if(isEmpty())
+		{
+		System.out.println("queue is empty");
+		}
+	else if(isFull())
+	{
+		System.out.println("queue is Full");
 
+	}
+	else {
+		System.out.println("Slots  reamining are "+ (size-rear-1));
+
+	}
+	}
 }
