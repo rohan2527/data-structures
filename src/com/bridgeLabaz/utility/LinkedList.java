@@ -1,7 +1,8 @@
 package com.bridgeLabaz.utility;
 
 public class LinkedList<T> {
-	 public Node head;  // head of list 
+	 public  Node head;  // head of list 
+	public int size;
 	  
 	    /* Linked list Node*/
 	    class Node <T>
@@ -12,12 +13,13 @@ public class LinkedList<T> {
 	        {
 	        	data = d; 
 	        	next = null; 
+	        	size=0;
 	        }
 		} 
 	    
 	   
 	    /* Inserts a new Node at front of the list. */
-	    public <T> void push(T new_data) 
+	    public <T> void instertAtFirst(T new_data) 
 	    { 
 	        /* 1 & 2: Allocate the Node & 
 	                  Put in the data*/
@@ -28,7 +30,93 @@ public class LinkedList<T> {
 	  
 	        /* 4. Move the head to point to new Node */
 	        head = new_node; 
-	    } 
+	        size++;
+	    }
+	    public <T> void insertAtLast(T data) 
+	    {	Node New_Node=new Node(data);
+	    	Node current=head;
+	    	New_Node.next=null;
+	    	if(head==null)
+	    	{
+	    		instertAtFirst(data);
+	    		head=New_Node;
+	    		return;
+	    	}
+	    	
+	    	while(current.next!=null)
+	    	{
+	    		current=current.next;
+	    	}
+	    	current.next=New_Node;
+	    	size++;
+	    	return;
+	    	
+	    }
+	    public  void deleteAtfirst()
+	    {Node current=head;
+	    	if(head==null)
+	    {
+	    	System.out.println("List is empty");
+	    	return;
+	    }
+	    	if (head.next==null)
+	    	{
+	    		head=null;
+	    		size--;
+	    		return;
+	    	}
+	    else
+	    {
+	    	head=head.next;
+	    	size--;
+	    }
+	    }
+	    public  void deleteAtLast()
+	    {Node current=head;
+	    	if(head==null)
+	    {
+	    	System.out.println("List is empty");
+	    	return;
+	    }
+	    	if (head.next==null)
+    	{
+    		head=null;
+    		size --;
+    		return;
+    	}
+	    else
+	    	while(current.next.next!=null)
+	    	{
+	    		current=current.next;
+	    	}
+	    	current.next=null;
+	    	size--;
+	    }
+	  
+	    public <T> void insertAtPos(int pos,T data) 
+	    { if(pos>size)
+	    {
+	    	System.out.println("invalid position");
+	    	return;
+	    }
+	    	Node New_Node = new Node(data);
+	    Node current=head;
+			if(pos==0)
+	    {
+	    	instertAtFirst(data);
+	    }
+			else
+	    {
+	    	for(int i=1;i<pos;i++)
+	    	{
+	    		current=current.next;
+	    	}
+	    	New_Node.next=current.next;
+	    	current.next=New_Node;
+	    	size++;
+	    }
+  }
+	    
 	    public void printList() 
 	    { 
 	        Node temp = head; 
@@ -38,6 +126,10 @@ public class LinkedList<T> {
 	            temp = temp.next; 
 	        } 
 	    } 
+	    public int size()
+	    {
+			return size;
+	    }
 	    public  int searchWord(Node head,String w)
 	    {
 	    	Node temp=head;
@@ -68,8 +160,13 @@ public class LinkedList<T> {
 			}
 	     return -1;
 	    }
-	   public void deleteNode(int position) 
+	   public void deleteAtPos(int position) 
 	    { 
+		   if(position>size)
+		    {
+		    	System.out.println("invalid position");
+		    	return;
+		    }
 	        // If linked list is empty 
 	        if (head == null) 
 	            return; 
@@ -80,20 +177,22 @@ public class LinkedList<T> {
 	        // If head needs to be removed 
 	        if (position == 0) 
 	        { 
-	            head = temp.next;   // Change head 
+	            head = temp.next;  // Change head
+	            size--;
 	            return; 
 	        } 
 	  
 	        // Find previous node of the node to be deleted 
-	        for (int i=0; temp!=null && i<position-1; i++) 
+	        for (int i=1; temp!=null && i<position-1; i++) 
 	            temp = temp.next; 
 	  
 	    
 	        // Node temp->next is the node to be deleted 
 	        // Store pointer to the next of node to be deleted 
 	        Node next = temp.next.next; 
-	  
+	        
 	        temp.next = next;  // Unlink the deleted node from list 
+	        size--;
 	    } 
 	  public  String intToString () {
         String result = "";
@@ -130,7 +229,7 @@ public class LinkedList<T> {
 	         Node current; 
 	  
 	         /* Special case for head node */
-	         if (head == null ||Integer.compare((int) new_node.data,(int) head.data)<0) 
+	         if (head == null ) 
 	         { 
 	            new_node.next = head; 
 	            head = new_node; 
@@ -161,5 +260,19 @@ public class LinkedList<T> {
 	          
 	         } 
 	     } 
+	  public <T> T lastNode()
+	  {
+		  Node current=head;
+		  while(current.next!=null)
+		  {
+			 current=current.next;
+		  }
+		  Node last=current.next;
+		 return (T) last.data;
+	  }
 	  
+	  public <T> T firstNode()
+	  {
+		  return (T) head.data;
+	  }
 }

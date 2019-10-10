@@ -21,10 +21,10 @@ public class UnOrderedList {
        LinkedList list=new LinkedList(); //initializing new link list 
     	String line = null;
   
-    	try {
+    	try {System.out.println("sgsdg");
             // FileReader reads text files in the default encoding.
             FileReader fileReader =  new FileReader("/home/admin1/Desktop/file.txt");//giving path to read file
-
+            System.out.println("sgsdg");
             // Always wrap FileReader in BufferedReader.
             BufferedReader bufferedReader = new BufferedReader(fileReader); //reading text from file
 
@@ -34,7 +34,7 @@ public class UnOrderedList {
          	 for(String w:s)
          	 {
 //          System.out.println(w);
-         		 list.push(w);
+         		 list.instertAtFirst(w);
          	 }
          	 }
             bufferedReader.close();
@@ -47,7 +47,7 @@ if(n>=0)			//if word is found at some position
 	System.out.println("*word  is deleted from linkedlist and file *");
 	System.out.println("updated list is :");
 
-	list.deleteNode(n);
+	list.deleteAtPos(n);
 	list.printList();
 }
 
@@ -57,7 +57,7 @@ else
 	System.out.println("*word  is not found in file*");
 	System.out.println("*new word is added  in linkedlist and file*");
 	System.out.println("updated list is :");
-    list.push(word);
+    list.instertAtFirst(word);
 	list.printList();
 
 	}

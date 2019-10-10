@@ -1,18 +1,19 @@
 package Com.Bridgelabaz.DataStructure;
 
-import com.bridgeLabaz.utility.Queue;
+import com.bridgeLabaz.utility.QueueUsingArray;
+import com.bridgeLabaz.utility.QueusingList;
 import com.bridgeLabaz.utility.Utility;
 
 public class BankCashCounter {
 	static Utility utility=new Utility();
-	static Queue Q=new Queue(10);
+	static QueusingList Q=new QueusingList(10);
 	static int cash=10000000;
 	static int c;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		String exit=new String();
-		do{ Q.showStatus();
+		do{
 		System.out.println("toatal amount in cash is="+cash);
 
 			System.out.println("1: Deposite Cash");
@@ -51,7 +52,8 @@ public class BankCashCounter {
 				 cash = cash+amount;
 		System.out.println("Amount deposited ="+amount);
 
-				}catch(Exception exception){
+				}catch(Exception exception)
+			{
 						System.out.println("Queue is Full.");
 					}
 					break;

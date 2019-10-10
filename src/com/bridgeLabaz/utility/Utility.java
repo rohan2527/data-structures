@@ -66,7 +66,7 @@ public int[] bubblesort(int[] a) {
 public boolean checkParenthese(String s) {
 	// TODO Auto-generated method stub
 int n=s.length();
-Stack stack=new Stack(n);
+StackUsingList stack=new StackUsingList(n);
 	for(int i=0;i<n;i++)
 	{		
 		char ch = s.charAt(i);

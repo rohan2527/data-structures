@@ -54,7 +54,7 @@ public class OrderedList {
 			 }
 		for(int j=num.length-1;j>=0;j--)
 		     {
-		    	 list.push(num[j]);
+		    	 list.instertAtFirst(num[j]);
 		     }
 		     }
 		     bufferedReader.close();
@@ -67,7 +67,7 @@ public class OrderedList {
 		    System.out.println("updated list is :");
 		    System.out.println("Deleted at " + pos); //for refrence 
 
-		    list.deleteNode(pos);
+		    list.deleteAtPos(pos);
 			list.printList();
 			}
 		     else

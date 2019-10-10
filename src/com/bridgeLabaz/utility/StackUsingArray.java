@@ -1,12 +1,12 @@
 package com.bridgeLabaz.utility;
 
-public class Stack {
+public class StackUsingArray {
 	private int maxSize;
 	private long[] stackArray;
 	private int top;
 
 	//for size  
-	public  Stack (int n)
+	public  StackUsingArray (int n)
 	{
 		int max_size=n;
 		stackArray = new long[max_size];

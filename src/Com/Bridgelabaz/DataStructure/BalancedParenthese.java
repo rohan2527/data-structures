@@ -1,6 +1,5 @@
 package Com.Bridgelabaz.DataStructure;
 
-import com.bridgeLabaz.utility.Stack;
 import com.bridgeLabaz.utility.Utility;
 
 public class BalancedParenthese {
@@ -11,8 +10,6 @@ public class BalancedParenthese {
 		System.out.println("Enter  expression");
 		String s=u.stringInput();
 		int n=s.length();
-		u.checkParenthese(s);
-		Stack stack=new Stack(n);
 
 if(u.checkParenthese(s))
 {

@@ -1,17 +1,17 @@
 package com.bridgeLabaz.utility;
 
-public class Queue {
+public class QueueUsingArray {
 	public static	int queue[];
 	public	int data;
 	 static int front;
 	 static	int rear;
 	static int size;
 		//constructor to create queue
-	public Queue(int n)
+	public QueueUsingArray(int n)
 	{
 		queue=new int[n];
-size = n;
-front=0;
+		size = n;
+		front=0;
 		rear=-1;
 		
 	}
